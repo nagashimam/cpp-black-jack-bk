@@ -1,14 +1,17 @@
 #include "all.h"
 
-enum Suit
+enum class Suit
 {
-    Diamonds,
+    Spades,
     Hearts,
+    Diamonds,
     Clubs,
-    Spades
 };
 
-enum Rank
+std::array<Suit, 4> allSuits();
+std::string suitValue(Suit suit);
+
+enum class Rank
 {
     One,
     Two,
@@ -25,21 +28,38 @@ enum Rank
     Thirteen
 };
 
-struct Card
+std::array<Rank, 13> allRanks();
+std::string rankValue(Rank rank);
+
+class Card
 {
+public:
+    virtual void print() {}
 };
 
-struct Joker : public Card
+class Joker : public Card
 {
+public:
+    void print();
 };
 
-struct PlainCard : public Card
+class PlainCard : public Card
 {
     Suit suit;
     Rank rank;
+
+public:
+    PlainCard(Suit suit, Rank rank);
+
+public:
+    void print();
 };
 
-struct Deck
+class Deck
 {
-    std::array<Card, 54> cards;
+public:
+    std::array<Card *, 54> cards;
+
+public:
+    Deck();
 };

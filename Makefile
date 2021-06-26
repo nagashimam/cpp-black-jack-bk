@@ -1,6 +1,6 @@
 gcc_options = -std=c++20 -Wall --pedantic-errors 
 
-blackjack : main.o 
+blackjack : main.o deck.o
 	g++ $(gcc_options) -o $@ $^
 	
 all.h.gch : all.h
@@ -8,3 +8,6 @@ all.h.gch : all.h
 
 main.o : main.cpp
 	g++ $(gcc_options) -c main.cpp
+	
+deck.o : deck.cpp
+	g++ $(gcc_options) -c deck.cpp
