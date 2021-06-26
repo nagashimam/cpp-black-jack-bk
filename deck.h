@@ -9,7 +9,7 @@ enum class Suit
 };
 
 std::array<Suit, 4> allSuits();
-std::string suitValue(Suit suit);
+std::string toString(Suit suit);
 
 enum class Rank
 {
@@ -29,18 +29,18 @@ enum class Rank
 };
 
 std::array<Rank, 13> allRanks();
-std::string rankValue(Rank rank);
+std::string toString(Rank rank);
 
 class Card
 {
 public:
-    virtual void print() {}
+    virtual std::string toString();
 };
 
 class Joker : public Card
 {
 public:
-    void print();
+    std::string toString();
 };
 
 class PlainCard : public Card
@@ -52,7 +52,7 @@ public:
     PlainCard(Suit suit, Rank rank);
 
 public:
-    void print();
+    std::string toString();
 };
 
 class Deck

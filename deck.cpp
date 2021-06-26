@@ -10,7 +10,7 @@ std::array<Suit, 4> allSuits()
         Suit::Clubs,
     };
 }
-std::string suitValue(Suit suit)
+std::string toString(Suit suit)
 {
     switch (suit)
     {
@@ -48,7 +48,7 @@ std::array<Rank, 13> allRanks()
     };
 }
 
-std::string rankValue(Rank rank)
+std::string toString(Rank rank)
 {
     switch (rank)
     {
@@ -89,14 +89,14 @@ PlainCard::PlainCard(Suit suit, Rank rank)
     PlainCard::suit = suit;
     PlainCard::rank = rank;
 }
-void PlainCard::print()
+std::string PlainCard::toString()
 {
-    std::cout << suitValue(PlainCard::suit) << "/" << rankValue(PlainCard::rank);
+    return ::toString(PlainCard::suit) + "/" + ::toString(PlainCard::rank);
 }
 
-void Joker::print()
+std::string Joker::toString()
 {
-    std::cout << "Joker";
+    return "Joker";
 }
 
 Deck::Deck()
