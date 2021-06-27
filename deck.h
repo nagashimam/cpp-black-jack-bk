@@ -34,7 +34,7 @@ std::string toString(Rank rank);
 class Card
 {
 public:
-    virtual std::string toString();
+    virtual std::string toString() { return ""; }
 };
 
 class Joker : public Card
@@ -57,9 +57,10 @@ public:
 
 class Deck
 {
-public:
-    std::array<Card *, 54> cards;
+    int generateRamdomCardIndex();
 
 public:
+    std::vector<Card *> cards;
     Deck();
+    Card *draw();
 };

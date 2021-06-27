@@ -11,3 +11,6 @@ main.o : main.cpp
 	
 deck.o : deck.cpp
 	g++ $(gcc_options) -c deck.cpp
+
+clean :
+	rm *.o *.h.gch

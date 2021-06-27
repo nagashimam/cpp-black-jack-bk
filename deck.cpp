@@ -84,6 +84,7 @@ std::string toString(Rank rank)
 }
 /* #endregion */
 
+/* #region PlainCard */
 PlainCard::PlainCard(Suit suit, Rank rank)
 {
     PlainCard::suit = suit;
@@ -93,26 +94,45 @@ std::string PlainCard::toString()
 {
     return ::toString(PlainCard::suit) + "/" + ::toString(PlainCard::rank);
 }
+/* #endregion */
 
+/* #region Joker */
 std::string Joker::toString()
 {
     return "Joker";
 }
+/* #endregion */
 
+/* #region Deck */
 Deck::Deck()
 {
     std::array<Suit, 4> suits = allSuits();
     std::array<Rank, 13> ranks = allRanks();
-    std::size_t di = 0;
     for (int si = 0; si < suits.size(); si++)
     {
         for (int ri = 0; ri < ranks.size(); ri++)
         {
-            Deck::cards.at(di) = new PlainCard(suits.at(si), ranks.at(ri));
-            di++;
+            Deck::cards.push_back(new PlainCard(suits.at(si), ranks.at(ri)));
         }
     }
-    Deck::cards.at(di) = new Joker();
-    di++;
-    Deck::cards.at(di) = new Joker();
+    Deck::cards.push_back(new Joker());
+    Deck::cards.push_back(new Joker());
 }
+
+//int Deck::generateRamdomCardIndex()
+//{
+//    int max = Deck::cards.size() - 1;
+//    std::random_device random;
+//    std::mt19937 mt(random());
+//    std::uniform_int_distribution<> randomDistribution(0, max);
+//    return randomDistribution(mt);
+//}
+//
+//Card *Deck::draw()
+//{
+//    int randomCardIndex = generateRamdomCardIndex();
+//    Card *pNextCard = Deck::cards.at(randomCardIndex);
+//    Deck::cards.erase(Deck::cards.begin() + randomCardIndex);
+//    return pNextCard;
+//}
+/* #endregion */
