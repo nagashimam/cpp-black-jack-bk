@@ -14,3 +14,6 @@ deck.o : deck.cpp
 
 clean :
 	rm *.o *.h.gch; make all.h.gch
+
+run : blackjack
+	./blackjack
