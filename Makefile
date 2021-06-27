@@ -13,4 +13,4 @@ deck.o : deck.cpp
 	g++ $(gcc_options) -c deck.cpp
 
 clean :
-	rm *.o *.h.gch
+	rm *.o *.h.gch; make all.h.gch
