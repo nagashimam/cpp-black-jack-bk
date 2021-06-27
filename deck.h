@@ -34,6 +34,7 @@ std::string toString(Rank rank);
 class Card
 {
 public:
+    Card();
     virtual std::string toString() { return ""; }
 };
 

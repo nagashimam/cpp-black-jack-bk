@@ -119,20 +119,22 @@ Deck::Deck()
     Deck::cards.push_back(new Joker());
 }
 
-//int Deck::generateRamdomCardIndex()
-//{
-//    int max = Deck::cards.size() - 1;
-//    std::random_device random;
-//    std::mt19937 mt(random());
-//    std::uniform_int_distribution<> randomDistribution(0, max);
-//    return randomDistribution(mt);
-//}
-//
-//Card *Deck::draw()
-//{
-//    int randomCardIndex = generateRamdomCardIndex();
-//    Card *pNextCard = Deck::cards.at(randomCardIndex);
-//    Deck::cards.erase(Deck::cards.begin() + randomCardIndex);
-//    return pNextCard;
-//}
+int Deck::generateRamdomCardIndex()
+{
+    int max = Deck::cards.size() - 1;
+    std::random_device random;
+    std::mt19937 mt(random());
+    std::uniform_int_distribution<> randomDistribution(0, max);
+    return randomDistribution(mt);
+}
+
+Card *Deck::draw()
+{
+    int randomCardIndex = generateRamdomCardIndex();
+    Card *pNextCard = Deck::cards.at(randomCardIndex);
+    Deck::cards.erase(Deck::cards.begin() + randomCardIndex);
+    return pNextCard;
+}
 /* #endregion */
+
+Card::Card() {}
