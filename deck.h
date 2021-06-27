@@ -33,24 +33,11 @@ std::string toString(Rank rank);
 
 class Card
 {
-public:
-    Card();
-    virtual std::string toString() { return ""; }
-};
-
-class Joker : public Card
-{
-public:
-    std::string toString();
-};
-
-class PlainCard : public Card
-{
     Suit suit;
     Rank rank;
 
 public:
-    PlainCard(Suit suit, Rank rank);
+    Card(Suit suit, Rank rank);
 
 public:
     std::string toString();

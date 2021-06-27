@@ -84,22 +84,15 @@ std::string toString(Rank rank)
 }
 /* #endregion */
 
-/* #region PlainCard */
-PlainCard::PlainCard(Suit suit, Rank rank)
+/* #region Card */
+Card::Card(Suit suit, Rank rank)
 {
-    PlainCard::suit = suit;
-    PlainCard::rank = rank;
+    Card::suit = suit;
+    Card::rank = rank;
 }
-std::string PlainCard::toString()
+std::string Card::toString()
 {
-    return ::toString(PlainCard::suit) + "/" + ::toString(PlainCard::rank);
-}
-/* #endregion */
-
-/* #region Joker */
-std::string Joker::toString()
-{
-    return "Joker";
+    return ::toString(Card::suit) + "/" + ::toString(Card::rank);
 }
 /* #endregion */
 
@@ -112,11 +105,9 @@ Deck::Deck()
     {
         for (int ri = 0; ri < ranks.size(); ri++)
         {
-            Deck::cards.push_back(new PlainCard(suits.at(si), ranks.at(ri)));
+            Deck::cards.push_back(new Card(suits.at(si), ranks.at(ri)));
         }
     }
-    Deck::cards.push_back(new Joker());
-    Deck::cards.push_back(new Joker());
 }
 
 int Deck::generateRamdomCardIndex()
@@ -136,5 +127,3 @@ Card *Deck::draw()
     return pNextCard;
 }
 /* #endregion */
-
-Card::Card() {}
